@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lễ Vu Quy</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg-cream: #f7f1e6;
+    --text-main: #3b3b3b;
+    --text-soft: #6b6b6b;
+    --text-accent: #5a84b6;
+  }
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Playfair Display", serif;
+    background: var(--bg-cream);
+    color: var(--text-main);
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, .script-font {
+    font-family: "Great Vibes", cursive;
+    font-weight: normal;
+    color: var(--text-accent);
+  }
+  p {
+    color: var(--text-soft);
+  }
+  /* Sections - all with cream background */
+  section {
+    width: 100%;
+    padding: 60px 20px;
+    background: var(--bg-cream);
+    text-align: center;
+  }
+
+  /* HERO */
+  .hero {
+    padding-top: 80px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+  }
+  .hero h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1.2s;
+  }
+  .hero .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    font-size: 14px;
+    color: var(--text-soft);
+    opacity: 0;
+    transition: 1.5s;
+  }
+
+  /* SECTION IMAGE */
+  .section-image {
+    background: var(--bg-cream);
+  }
+  .image-box {
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: 1.2s ease;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #777;
+  }
+  .image-box img {
+    width: 100%;
+    display: block;
+  }
+
+  /* SECTION MESSAGE */
+  .section-message {
+    padding: 80px 20px;
+  }
+  .message-box {
+    max-width: 700px;
+    margin: auto;
+    color: var(--text-main);
+    font-style: italic;
+    line-height: 1.8;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.2s ease;
+  }
+  .message-box .date {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: var(--text-main);
+  }
+  .message-box strong {
+    color: var(--text-accent);
+  }
+
+  /* CARD */
+  .card-wrapper {
+    margin-top: 60px;
+    perspective: 1000px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.2s ease;
+  }
+  .card {
+    width: 260px;
+    height: 180px;
+    margin: auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    cursor: pointer;
+  }
+  .card.open {
+    transform: rotateY(180deg);
+  }
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .card-front {
+    background: #8cc6ff;
+    color: white;
+  }
+  .card-back {
+    background: white;
+    color: #333;
+    transform: rotateY(180deg);
+  }
+
+  /* SECTION FAMILY */
+  .section-family {
+    padding: 90px 20px;
+    color: var(--text-main);
+  }
+  .family-row {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .family-col {
+    flex: 1;
+    min-width: 260px;
+  }
+  .family-col h4 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--text-accent);
+  }
+  .family-col p {
+    margin: 6px 0;
+    font-size: 16px;
+  }
+  .family-col span {
+    font-size: 14px;
+    opacity: 0.8;
+    color: var(--text-soft);
+  }
+  .couple-names {
+    margin: 80px 0 40px;
+  }
+  .couple-names h1 {
+    font-size: 56px;
+    color: var(--text-accent);
+    font-weight: normal;
+  }
+  .and {
+    font-size: 28px;
+    font-style: italic;
+    margin: 10px 0;
+    color: #e6d8a2;
+  }
+  .invite-text {
+    margin-top: 40px;
+    font-size: 20px;
+  }
+  .invite-text .highlight {
+    font-size: 26px;
+    margin-top: 10px;
+    color: var(--text-accent);
+  }
+
+  /* SECTION DATE */
+  .section-date {
+    padding: 90px 20px 0;
+    color: var(--text-main);
+  }
+  .date-box {
+    max-width: 800px;
+    margin: auto;
+  }
+  .top-line {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+  .date-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  .date-main .side {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .date-main .day {
+    font-size: 80px;
+    color: #8cc6ff;
+    font-weight: 500;
+  }
+  .lunar {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 15px 0;
+  }
+  .address {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .home {
+    margin-top: 15px;
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+  .timeline {
+    margin-top: 80px;
+  }
+  .timeline-title {
+    font-family: cursive;
+    font-size: 36px;
+    color: #8cc6ff;
+    margin-bottom: 30px;
+  }
+  .timeline-image {
+    max-width: 900px;
+    height: 400px;
+    margin: auto;
+    border-radius: 20px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #777;
+  }
+
+  /* SECTION CHECKIN */
+  .section-checkin {
+    padding: 80px 20px;
+    color: var(--text-main);
+  }
+  .checkin-title {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .checkin-title span {
+    opacity: 0.6;
+  }
+  .checkin-title .active {
+    font-weight: bold;
+    opacity: 1;
+  }
+  .checkin-text {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+  }
+  .checkin-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .person {
+    width: 220px;
+  }
+  .img-box {
+    width: 100%;
+    height: 280px;
+    background: #ddd;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-style: italic;
+  }
+  .name {
+    margin-top: 20px;
+    color: var(--text-main);
+  }
+  .name strong {
+    display: block;
+    font-size: 22px;
+    color: var(--text-accent);
+  }
+  .name span {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  .heart {
+    font-size: 40px;
+    color: #e25555;
+  }
+
+  /* SECTION CALENDAR */
+  .section-calendar {
+    padding: 80px 20px;
+    color: var(--text-main);
+  }
+  .calendar-box {
+    max-width: 360px;
+    margin: 0 auto 60px;
+    background: rgba(255,255,255,0.6);
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  .calendar-header {
+    font-family: cursive;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--text-accent);
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    font-size: 14px;
+  }
+  .calendar-grid span {
+    padding: 6px 0;
+    opacity: 0.7;
+  }
+  .heart-day {
+    background: #e25555;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: bold;
+  }
+  .calendar-image {
+    max-width: 700px;
+    margin: auto;
+  }
+  .img-placeholder {
+    width: 100%;
+    height: 420px;
+    background: #ddd;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-style: italic;
+  }
+
+  /* SECTION COUNTDOWN */
+  .section-countdown {
+    padding: 80px 20px;
+    color: var(--text-main);
+  }
+  .countdown-title {
+    font-family: cursive;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: var(--text-accent);
+  }
+  .countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .time {
+    background: var(--text-accent);
+    color: #fff;
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .time span {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .time small {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  /* SECTION THANK YOU */
+  .section-thankyou {
+    padding: 80px 20px 120px;
+    color: var(--text-main);
+  }
+  .thankyou-image {
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .thankyou-image .img-placeholder {
+    width: 100%;
+    height: 420px;
+    background: #ddd;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-style: italic;
+  }
+  .thankyou-text p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #555;
+  }
+  .thankyou-text h3 {
+    font-family: cursive;
+    font-size: 32px;
+    color: var(--text-accent);
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.2s ease;
+  }
+  .reveal.show {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* HERO ANIMATION */
+  .hero.show h1,
+  .hero.show h2,
+  .hero.show .info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hero.show h2 {
+    transition-delay: 0.3s;
+  }
+  .hero.show .info {
+    transition-delay: 0.6s;
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .time {
+      width: 70px;
+      height: 70px;
+    }
+    .time span {
+      font-size: 20px;
+    }
+    .thankyou-image .img-placeholder {
+      height: 300px;
+    }
+    .hero h1 {
+      font-size: 36px;
+    }
+    .hero h2 {
+      font-size: 28px;
+    }
+    .date-main {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .date-main .day {
+      font-size: 64px;
+    }
+    .timeline-image {
+      height: 260px;
+    }
+  }
+  /* Bao phủ full chiều cao trang */
+  .decor-left, .decor-right {
+    position: fixed;
+    top: 0;
+    width: 80px;  /* rộng cột trang trí */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 10px;
+    pointer-events: none; /* không can thiệp chuột */
+    z-index: 10;
+    opacity: 0.15;
+    animation: floatUpDown 6s ease-in-out infinite;
+    user-select: none;
+    font-size: 28px;
+  }
+
+  /* Trái - bên trái */
+  .decor-left {
+    left: 0;
+    align-items: center;
+  }
+
+  /* Phải - bên phải */
+  .decor-right {
+    right: 0;
+    align-items: center;
+  }
+
+  /* Icon nhỏ riêng lẻ có hiệu ứng decorative */
+  .decor-left > div, .decor-right > div {
+    animation: floatUpDown 6s ease-in-out infinite;
+  }
+
+  /* Nhiều icon có delay khác nhau để động nhẹ */
+  .decor-left > div:nth-child(2) {
+    animation-delay: 2s;
+  }
+  .decor-left > div:nth-child(3) {
+    animation-delay: 4s;
+  }
+  .decor-right > div:nth-child(2) {
+    animation-delay: 3s;
+  }
+  .decor-right > div:nth-child(3) {
+    animation-delay: 5s;
+  }
+
+  /* Keyframes từ lên xuống lơ nhẹ */
+  @keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.15;
+    }
+    50% {
+      transform: translateY(15px);
+      opacity: 0.25;
+    }
+  }
+
+  /* Hiệu ứng lấp lánh sparkle */
+  .sparkles-overlay {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: visible;
+  }
+
+  /* tạo các sparkles bằng hộp nhỏ, dùng box-shadow nhiều điểm */
+  .sparkles-overlay::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow:
+      80vw 15vh #fff,
+      40vw 30vh #fff,
+      75vw 50vh #fff,
+      60vw 70vh #fff,
+      20vw 80vh #fff,
+      50vw 90vh #fff,
+      10vw 60vh #fff,
+      30vw 40vh #fff,
+      90vw 20vh #fff;
+    animation: sparkleMove 6s linear infinite alternate;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 6px #fff);
+  }
+
+  /* tạo hiệu ứng nhấp nháy */
+  .sparkles-overlay::after {
+    content: "";
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow:
+      10vw 15vh #fff,
+      70vw 25vh #fff,
+      90vw 35vh #fff,
+      55vw 55vh #fff,
+      60vw 80vh #fff,
+      80vw 95vh #fff,
+      40vw 70vh #fff,
+      30vw 45vh #fff,
+      15vw 35vh #fff;
+    animation: sparkleTwinkle 4s ease-in-out infinite alternate;
+    opacity: 0.25;
+    filter: drop-shadow(0 0 5px #fff);
+  }
+
+  /* Di chuyển chậm nhẹ cho sparkles */
+  @keyframes sparkleMove {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translate(10px, -10px);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 0.3;
+    }
+  }
+
+  /* Nhấp nháy biến đổi scale + opacity */
+  @keyframes sparkleTwinkle {
+    0% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.4);
+    }
+    100% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+  }
+
+  /* Tim thả */
+  @keyframes heart-pop {
+    0% {
+      transform: scale(0) translateY(0);
+      opacity: 1;
+    }
+    80% {
+      transform: scale(1.2) translateY(-60px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) translateY(-100px);
+      opacity: 0;
+    }
+  }
+
+  .heart-fly {
+    pointer-events: none;
+    position: fixed;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e25555;
+    animation: heart-pop 1s forwards;
+    user-select: none;
+    z-index: 9999;
+  }
+
+  /* Hiệu ứng bay lượn bướm đỏ */
+
+  @keyframes butterfly-flap {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+  }
+
+  @keyframes butterfly-fly-around {
+    0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+    20%  { transform: translate(20vw, -10vh) rotate(20deg) scale(1.2); }
+    40%  { transform: translate(40vw, 10vh) rotate(-15deg) scale(1); }
+    60%  { transform: translate(60vw, -5vh) rotate(15deg) scale(1.1); }
+    80%  { transform: translate(80vw, 15vh) rotate(-10deg) scale(1); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  }
+
+  #red-butterfly {
+    position: fixed;
+    font-size: 36px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 10000;
+    animation:
+      butterfly-flap 1s ease-in-out infinite,
+      butterfly-fly-around 15s ease-in-out infinite;
+    left: 0;
+    top: 50vh;
+  }
+
+  #h1 {
+    color: black;
+    font-family: 'Great Vibes', cursive;
+  }
+#h2 {
+    color: black;
+    font-family: 'Great Vibes', cursive;
+  }
+  #h3 {
+    color: black;
+    font-family: 'Great Vibes', cursive;
+  }
+  &amp;
+</style>
+</head>
+
+<body>
+<div class="decor-left">
+  <div class="flower">🌸</div>
+  <div class="leaf">🍃</div>
+  <div class="heart">❤️</div>
+</div>
+<div class="decor-right">
+  <div class="flower">🌼</div>
+  <div class="leaf">🍂</div>
+  <div class="heart">💖</div>
+</div>
+<div class="decor-left">
+  <div class="flower">🌸</div>
+  <div class="leaf">🍃</div>
+  <div class="heart">❤️</div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+</div>
+<div class="decor-right">
+  <div class="flower">🌼</div>
+  <div class="leaf">🍂</div>
+  <div class="heart">💖</div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+</div>
+<div class="sparkles-overlay" aria-hidden="true"></div>
+
+<!-- SECTION 1: HEADER -->
+<section class="hero">
+  <h1 id="h1">Lễ Vu Quy</h1>
+  <h2 id="h2">Hồng Lộc &amp;   Mỹ Hằng</h2>
+
+  <div class="info" id="info">
+    <div>📅 27 Tháng 01 2026</div>
+    <div>⏰ 07:00 • Thứ Ba</div>
+    <div>📍221 Nhơn Thọ 2 - Nhơn Ái – Phong Điền – Cần Thơ</div>
+</div>
+  </div>
+</section>
+
+<!-- SECTION 2: PLACEHOLDER IMAGE -->
+<section class="section-image">
+  <div class="image-box placeholder reveal" id="imgBox">
+    <span>Ảnh kỷ niệm</span>
+  </div>
+</section>
+
+<!-- SECTION 3: MESSAGE + CARD -->
+<section class="section-message">
+  <div class="message-box reveal">
+    <div class="date">27.01.2026</div>
+
+    <p>
+      “Chúng ta đã cùng nhau đi qua nhiều thăng trầm, để nhận ra rằng được ở bên nhau là điều quý giá nhất”
+    </p>
+
+    <p>
+      Hôm nay, trước sự chứng kiến của mọi người, từ khoảnh khắc này chúng ta nhẹ nhàng gọi nhau bằng hai tiếng
+      <strong>vợ chồng</strong>
+    </p>
+  </div>
+
+  <div class="card-wrapper reveal">
+    <div class="card" onclick="toggleCard()">
+      <div class="card-front">
+        <span>💌</span>
+      </div>
+      <div class="card-back">
+        <span>Ảnh của chúng mình</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: FAMILY -->
+<section class="section-family">
+
+  <div class="family-row">
+    <div class="family-col">
+      <h4>Nhà Trai</h4>
+      <p>Ông: Thái Hồng Lạc</p>
+      <p>Bà: Nguyễn Thị Diệu Liên</p>
+      <span>Cần Thơ</span>
+    </div>
+
+    <div class="family-col">
+      <h4>Nhà Gái</h4>
+      <p>Ông: Dương Văn Dinh</p>
+      <p>Bà: Lê Thị Cẩm Nhanh</p>
+      <span>Cần Thơ</span>
+    </div>
+  </div>
+
+  <div class="couple-names">
+    <h1>Hồng Lộc</h1>
+    <div class="and">and</div>
+    <h1>Mỹ Hằng</h1>
+  </div>
+
+  <div class="invite-text">
+    <p>Trân trọng mời bạn</p>
+    <p class="highlight">Dự Lễ Vu Quy</p>
+  </div>
+
+</section>
+
+<!-- SECTION 5: DATE & TIMELINE -->
+<section class="section-date">
+
+  <div class="date-box">
+    <div class="top-line">Vào 07:00, Thứ Ba</div>
+
+    <div class="date-main">
+      <div class="side">Tháng 01</div>
+      <div class="day">27</div>
+      <div class="side">Năm 2026</div>
+    </div>
+
+    <div class="lunar">(Tức ngày 09 tháng 12 năm Ất Tỵ)</div>
+
+
+    </div>
+
+    <div class="home">Tư gia nhà trai</div>
+    <div class="address">
+  221 Nhơn Thọ 2 – Nhơn Ái – Phong Điền – Cần Thơ<br/>
+  <a href="https://maps.app.goo.gl/EHybptwQ3vhpQmJW9?g_st=iz" target="_blank" rel="noopener noreferrer">
+    Xem bản đồ
+  </a>
+</div>
+
+</section>
+
+<!-- SECTION 6: CHECKIN -->
+<section class="section-checkin reveal">
+
+
+
+  <p class="checkin-text">
+    Rất mong bạn có thể sắp xếp tới sớm để chụp <br>
+    thật nhiều ảnh kỷ niệm cùng chúng mình nhé!
+  </p>
+
+  <div class="checkin-images">
+    <div class="person">
+      <div class="img-box">Ảnh chú rể</div>
+      <div class="name">
+        <strong>Hồng Lộc</strong>
+        <span>Chú rể</span>
+      </div>
+    </div>
+
+    <div class="heart">❤️</div>
+
+    <div class="person">
+      <div class="img-box">Ảnh cô dâu</div>
+      <div class="name">
+        <strong>Mỹ Hằng</strong>
+        <span>Cô dâu</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SECTION 7: CALENDAR -->
+<section class="section-calendar reveal">
+
+  <div class="calendar-box">
+    <div class="calendar-header">Tháng 1</div>
+
+    <div class="calendar-grid">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+      <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+      <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+      <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
+      <span class="heart-day">27</span>
+      <span>28</span><span>29</span><span>30</span><span>31</span>
+    </div>
+  </div>
+
+  <div class="calendar-image">
+    <div class="img-placeholder">Ảnh cưới</div>
+  </div>
+
+</section>
+
+<!-- SECTION 8: COUNTDOWN -->
+<section class="section-countdown reveal">
+
+  <div class="countdown-title">Chỉ còn...</div>
+
+  <div class="countdown-box">
+    <div class="time">
+      <span id="days">0</span>
+      <small>ngày</small>
+    </div>
+    <div class="time">
+      <span id="hours">0</span>
+      <small>giờ</small>
+    </div>
+    <div class="time">
+      <span id="minutes">0</span>
+      <small>phút</small>
+    </div>
+    <div class="time">
+      <span id="seconds">0</span>
+      <small>giây</small>
+    </div>
+  </div>
+
+</section>
+
+<!-- SECTION 9: THANK YOU -->
+<section class="section-thankyou reveal">
+
+  <div class="thankyou-image">
+    <div class="img-placeholder">Ảnh cưới</div>
+  </div>
+
+  <div class="thankyou-text">
+    <p>
+      Cảm ơn bạn đã dành tình cảm cho chúng mình. <br>
+      Sự hiện diện của bạn chính là món quà ý nghĩa nhất, <br>
+      và chúng mình vô cùng trân quý khi được cùng bạn chia sẻ <br>
+      niềm hạnh phúc trong ngày trọng đại này.
+    </p>
+
+    <h3>Thank you!</h3>
+  </div>
+
+</section>
+
+<!-- Bướm đỏ bay lượn -->
+<div id="red-butterfly" aria-hidden="true">💍</div>
+
+<script>
+  /* OBSERVER */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  });
+
+  /* OBSERVE ALL */
+  document.querySelectorAll(".reveal, #h1, #h2, #info").forEach(el => {
+    observer.observe(el);
+  });
+
+  /* CARD OPEN */
+  function toggleCard() {
+    document.querySelector(".card").classList.toggle("open");
+  }
+</script>
+<script>
+  /* ===== COUNTDOWN WEDDING ===== */
+  const weddingDate = new Date("2026-01-27T07:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) return;
+
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+      Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("minutes").innerText =
+      Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("seconds").innerText =
+      Math.floor((distance % (1000 * 60)) / 1000);
+  }, 1000);
+</script>
+<script>
+  /* HERO LOAD ANIMATION */
+  window.addEventListener("load", () => {
+    document.querySelector(".hero").classList.add("show");
+  });
+
+  /* Hiệu ứng tim bay khi click */
+  document.body.addEventListener('click', function(e) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-fly';
+    heart.style.left = e.clientX - 12 + 'px';
+    heart.style.top = e.clientY - 12 + 'px';
+    heart.innerText = '❤️';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 1000);
+  });
+
+  /* Bỏ js di chuyển bướm theo scroll - animation CSS loạii hoàn toàn */
+</script>
+
+<!-- Nhạc nền đám cưới -->
+<audio autoplay loop>
+  <source src="https://ia803400.us.archive.org/34/items/i-do-911/I%20Do%20-%20911.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+</body>
+</html>
