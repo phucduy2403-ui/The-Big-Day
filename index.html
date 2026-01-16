@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lễ Vu Quy</title>
+<title>Lễ Tân Hôn</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
@@ -733,7 +733,7 @@
     color: black;
     font-family: 'Great Vibes', cursive;
   }
-#h2 {
+  #h2 {
     color: black;
     font-family: 'Great Vibes', cursive;
   }
@@ -741,7 +741,6 @@
     color: black;
     font-family: 'Great Vibes', cursive;
   }
-  &amp;
 </style>
 </head>
 
@@ -774,7 +773,7 @@
 
 <!-- SECTION 1: HEADER -->
 <section class="hero">
-  <h1 id="h1">Lễ Vu Quy</h1>
+  <h1 id="h1">Lễ Tân Hôn</h1>
   <h2 id="h2">Hồng Lộc &amp;   Mỹ Hằng</h2>
 
   <div class="info" id="info">
@@ -810,7 +809,7 @@
   </div>
 
   <div class="card-wrapper reveal">
-    <div class="card" onclick="toggleCard()">
+    <div class="card">
       <div class="card-front">
         <span>💌</span>
       </div>
@@ -857,7 +856,7 @@
 <section class="section-date">
 
   <div class="date-box">
-    <div class="top-line">Vào 07:00, Thứ Ba</div>
+    <div class="top-line">Vào 011:00, Thứ Ba</div>
 
     <div class="date-main">
       <div class="side">Tháng 01</div>
@@ -882,7 +881,6 @@
 
 <!-- SECTION 6: CHECKIN -->
 <section class="section-checkin reveal">
-
 
 
   <p class="checkin-text">
@@ -989,6 +987,22 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
+
+        // Nếu phần chứa thẻ card-wrapper reveal xuất hiện thì mở card
+        if (entry.target.classList.contains('card-wrapper')) {
+          const card = entry.target.querySelector('.card');
+          if (card) {
+            card.classList.add('open');
+          }
+        }
+      } else {
+        // Khi ra khỏi viewport thì tắt hiệu ứng mở card
+        if (entry.target.classList.contains('card-wrapper')) {
+          const card = entry.target.querySelector('.card');
+          if (card) {
+            card.classList.remove('open');
+          }
+        }
       }
     });
   });
@@ -998,10 +1012,7 @@
     observer.observe(el);
   });
 
-  /* CARD OPEN */
-  function toggleCard() {
-    document.querySelector(".card").classList.toggle("open");
-  }
+  /* CARD OPEN toggleCard function không còn dùng */
 </script>
 <script>
   /* ===== COUNTDOWN WEDDING ===== */
