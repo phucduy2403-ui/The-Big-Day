@@ -741,35 +741,80 @@
     color: black;
     font-family: 'Great Vibes', cursive;
   }
+  .calendar-image {
+  max-width: 700px;
+  height: 420px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slideshow {
+  display: flex;
+  width: 300%; /* 3 ảnh nên 300% */
+  height: 100%;
+  animation: slide 12s infinite;
+}
+
+.slideshow img {
+  width: 33.3333%; /* chia đều cho 3 ảnh */
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Animation trượt sang trái */
+@keyframes slide {
+  0%, 20% {
+    transform: translateX(0%);
+  }
+  33%, 53% {
+    transform: translateX(-33.3333%);
+  }
+  66%, 86% {
+    transform: translateX(-66.6666%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+.decor-left {
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.decor-left.show {
+  transform: translateX(0);
+  opacity: 0.15;
+}
+
+.decor-right {
+  transform: translateX(100px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.decor-right.show {
+  transform: translateX(0);
+  opacity: 0.15;
+}
+
 </style>
 </head>
 
 <body>
 <div class="decor-left">
-  <div class="flower">🌸</div>
-  <div class="leaf">🍃</div>
-  <div class="heart">❤️</div>
+  <div class="flower">
+    <img src="./assets/hoatrai.jpg" alt="Flower Left" style="width:30px;"/>
+  </div>
 </div>
 <div class="decor-right">
-  <div class="flower">🌼</div>
-  <div class="leaf">🍂</div>
-  <div class="heart">💖</div>
+  <div class="flower">
+    <img src="./assets/hoaphai.jpg" alt="Flower Right" style="width:30px;"/>
+  </div>
 </div>
-<div class="decor-left">
-  <div class="flower">🌸</div>
-  <div class="leaf">🍃</div>
-  <div class="heart">❤️</div>
-  <div class="sparkle"></div>
-  <div class="sparkle"></div>
-</div>
-<div class="decor-right">
-  <div class="flower">🌼</div>
-  <div class="leaf">🍂</div>
-  <div class="heart">💖</div>
-  <div class="sparkle"></div>
-  <div class="sparkle"></div>
-</div>
-<div class="sparkles-overlay" aria-hidden="true"></div>
 
 <!-- SECTION 1: HEADER -->
 <section class="hero">
@@ -890,25 +935,23 @@
   </p>
 
   <div class="checkin-images">
-<div class="person">
-  <div class="img-box">
-    <img src="./assets/chure.jpg" alt="Ảnh chú rể" style="width:100%; height:100%; object-fit: cover; border-radius: 20px;">
-  </div>
-  <div class="name">
-    <strong>Hồng Lộc</strong>
-    <span>Chú rể</span>
-  </div>
-</div>
+    <div class="person">
+      <div class="img-box">Ảnh chú rể</div>
+      <div class="name">
+        <strong>Hồng Lộc</strong>
+        <span>Chú rể</span>
+      </div>
+    </div>
 
-<div class="person">
-  <div class="img-box">
-    <img src="./assets/codau.jpg" alt="Ảnh cô dâu" style="width:100%; height:100%; object-fit: cover; border-radius: 20px;">
-  </div>
-  <div class="name">
-    <strong>Mỹ Hằng</strong>
-    <span>Cô dâu</span>
-  </div>
-</div>
+    <div class="heart">❤️</div>
+
+    <div class="person">
+      <div class="img-box">Ảnh cô dâu</div>
+      <div class="name">
+        <strong>Mỹ Hằng</strong>
+        <span>Cô dâu</span>
+      </div>
+    </div>
   </div>
 
 </section>
@@ -917,7 +960,14 @@
 <section class="section-calendar reveal">
 
   <div class="calendar-box">
-    <div class="calendar-header">Tháng 1</div>
+  <div class="calendar-header">Tháng 1</div>
+    <div class="calendar-image">
+  <div class="slideshow">
+    <img src="./assets/cuoianh1.jpg" alt="Ảnh cưới 1" />
+    <img src="./assets/cuoianh2.jpg" alt="Ảnh cưới 2" />
+    <img src="./assets/cuoianh3.jpg" alt="Ảnh cưới 3" />
+  </div>
+</div>
 
     <div class="calendar-grid">
       <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
@@ -1062,6 +1112,21 @@
   });
 
   /* Bỏ js di chuyển bướm theo scroll - animation CSS loạii hoàn toàn */
+</script>
+<script>
+  const allDecor = document.querySelectorAll('.decor-left, .decor-right');
+
+  const decorObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  allDecor.forEach(el => decorObserver.observe(el));
 </script>
 
 <!-- Nhạc nền đám cưới -->
